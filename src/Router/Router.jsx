@@ -4,9 +4,10 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Login from "../components/AuthPages/Login";
 import SignUp from "../components/AuthPages/Signup";
 import ContactUs from "../Pages/ContactUs";
-import CreateGroup from "../Pages/CreatGroup";
+import CreateGroup from "../Pages/CreateGroup";
 import PrivateRout from "../Provider/PrivateRout";
 import Home from "../Pages/Home";
+import Profile from "../Pages/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 Component: Home,
                 loader: async () => {
-                    const res = await fetch('http://localhost:3000/users');
+                    const res = await fetch('http://localhost:3000/createGroup');
                     return res.json();
                 },
                 // loader: async () => {
@@ -29,11 +30,15 @@ export const router = createBrowserRouter([
                 hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
+                path: "/Profile",
+                element: <PrivateRout><Profile/></PrivateRout>,
+            },
+            {
                 path: "/explore",
                 element: <h1>Explore</h1>,
             },
             {
-                path: "/creatGroup",
+                path: "/createGroup",
                 element: <PrivateRout><CreateGroup /></PrivateRout>,
             },
             {

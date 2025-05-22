@@ -32,7 +32,7 @@ const CreateGroup = () => {
     const newGroup = Object.fromEntries(formData.entries())
 
     // send data to the server
-    fetch('http://localhost:3000/creatGroup', {
+    fetch('http://localhost:3000/createGroup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -2,8 +2,8 @@ import React, { use } from 'react';
 import { FaPaw } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
-import { AuthContext } from '../../../Provider/AuthProvider';
-import PhotoUser from '../../Profile/PhotoUser';
+import { AuthContext } from '../../Provider/AuthProvider';
+import PhotoUser from '../Profile/PhotoUser';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext);
@@ -22,8 +22,9 @@ const Navbar = () => {
     const links = (
         <>
             <NavLink to="/" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Home</NavLink>
+            {user && <NavLink to="/Profile" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Profile</NavLink>}
             <NavLink to="/explore" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Explore</NavLink>
-            <NavLink to="/creatGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Create Group</NavLink>
+            <NavLink to="/createGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Create Group</NavLink>
             {user && <NavLink to="/MyGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>My Groups</NavLink>}
             <NavLink to="/contactUs" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Contact Us</NavLink>
         </>
