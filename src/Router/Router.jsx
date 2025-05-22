@@ -6,6 +6,7 @@ import SignUp from "../components/AuthPages/Signup";
 import ContactUs from "../Pages/ContactUs";
 import CreateGroup from "../Pages/CreatGroup";
 import PrivateRout from "../Provider/PrivateRout";
+import Home from "../Pages/Home";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,16 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 path: '/',
-                element: <h1>Home</h1>
+                Component: Home,
+                loader: async () => {
+                    const res = await fetch('http://localhost:3000/users');
+                    return res.json();
+                },
+                // loader: async () => {
+                //     const res = await fetch('https://pawsome-hobby-server.vercel.app/users');
+                //     return res.json();
+                // },
+                hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
                 path: "/explore",
