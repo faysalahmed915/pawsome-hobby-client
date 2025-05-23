@@ -1,12 +1,29 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import GroupDetails from '../components/Group/GroupDetails';
 // import { UserContext } from '../Provider/UserProvider';
 
 const Home = () => {
     // const { fetchedData } = useContext(UserContext);
     const groups = useLoaderData();
     // console.log(users);
+    
+
+
+
     return (<>
+
+        {
+            groups.map((group) => (
+               <GroupDetails group={group}></GroupDetails>
+            ))
+
+        }
+
+
+
+
+
         <div className="p-6 max-w-7xl mx-auto">
             <h1 className="text-3xl font-bold mb-6 text-center">Hobby Groups</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -41,6 +58,9 @@ const Home = () => {
                 ))}
             </div>
         </div>
+
+
+
         {/* <div className="p-6 max-w-6xl mx-auto">
             <h1 className="text-3xl font-bold mb-6 text-center">Hobby Groups</h1>
             <div className="space-y-6">
