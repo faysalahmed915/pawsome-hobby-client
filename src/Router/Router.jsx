@@ -9,6 +9,7 @@ import PrivateRout from "../Provider/PrivateRout";
 import Home from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import Explore from "../Pages/Explore";
+import GroupDetails from "../components/Group/GroupDetails";
 
 export const router = createBrowserRouter([
     {
@@ -20,14 +21,14 @@ export const router = createBrowserRouter([
                 index: true,
                 path: '/',
                 Component: Home,
-                loader: async () => {
-                    const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
-                    return res.json();
-                },
                 // loader: async () => {
-                //     const res = await fetch('http://localhost:3000/createGroup');
+                //     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                 //     return res.json();
                 // },
+                loader: async () => {
+                    const res = await fetch('http://localhost:3000/createGroup');
+                    return res.json();
+                },
                
                 hydrateFallbackElement: <h1>Loading...</h1>,
             },
@@ -38,14 +39,14 @@ export const router = createBrowserRouter([
             {
                 path: "/explore",
                 element: <Explore />,
-                // loader: async () => {
-                //     const res = await fetch('http://localhost:3000/createGroup');
-                //     return res.json();
-                // },
-               loader: async () => {
-                    const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
+                loader: async () => {
+                    const res = await fetch('http://localhost:3000/createGroup');
                     return res.json();
                 },
+            //    loader: async () => {
+            //         const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
+            //         return res.json();
+            //     },
                 hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
@@ -55,6 +56,19 @@ export const router = createBrowserRouter([
             {
                 path: "/MyGroup",
                 element: <PrivateRout><h1>My Group</h1></PrivateRout>,
+            },
+            {
+                path: "/group/:_id",
+                element: <GroupDetails></GroupDetails>,
+                loader: async () => {
+                    const res = await fetch('http://localhost:3000/createGroup');
+                    return res.json();
+                },
+            //    loader: async () => {
+            //         const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
+            //         return res.json();
+            //     },
+                hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
                 path: "/contactUs",

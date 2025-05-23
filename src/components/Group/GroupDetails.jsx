@@ -1,7 +1,73 @@
 import React from 'react';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
-const GroupDetails = ({ group, onJoin, onDelete }) => {
-  if (!group) return null;
+const GroupDetails = ({ onJoin }) => {
+
+  // { onJoin, onDelete }
+  const navigate = useNavigate()
+
+  const Groups = useLoaderData()
+  // console.log(Groups)
+
+  if (!Groups) return null;
+  const { _id } = useParams()
+  // console.log(_id);
+
+  // const group = Groups.find(group => group._id === parseInt(_id));
+
+  const group = Groups.find(group => group._id === _id);
+
+
+  // console.log(group)
+
+const handleUpdate = () => {
+  
+}
+
+
+
+
+
+  const handleDelete = (  ) => {
+    // const id = parseInt(_id);
+    // console.log (typeof id)
+
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      console.log(result.isConfirmed)
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:3000/createGroup/${_id}`, {
+          method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data=>{
+          console.log('after delete', data)
+        })
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+
+        navigate('/explore')
+      }
+    });
+  }
+
+
+
+
+
 
   const deadlineDate = new Date(group.startDate);
   const now = new Date();
@@ -14,10 +80,16 @@ const GroupDetails = ({ group, onJoin, onDelete }) => {
     day: 'numeric',
   });
 
+
+
+
+
+
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       {/* Image Banner */}
-      <div className="w-full h-64 rounded-2xl overflow-hidden shadow">
+      <div className="w-full md:h-96 lg:max-h-[550px] rounded-2xl overflow-hidden shadow">
         <img
           src={group.imageUrl}
           alt={group.groupName}
@@ -32,16 +104,21 @@ const GroupDetails = ({ group, onJoin, onDelete }) => {
           <button
             onClick={() => onJoin(group._id)}
             disabled={isDeadlineOver}
-            className={`px-4 py-2 rounded-xl transition text-white ${
-              isDeadlineOver
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
-            }`}
+            className={`px-4 py-2 rounded-xl transition text-white ${isDeadlineOver
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-green-600 hover:bg-green-700'
+              }`}
           >
             Join Group
           </button>
           <button
-            onClick={() => onDelete(group._id)}
+            onClick={() => handleUpdate(group._id)}
+            className="text-white px-4 py-2 rounded-xl bg-green-600 hover:bg-green-700 transition"
+          >
+            Update Group
+          </button>
+          <button
+            onClick={() => handleDelete(group._id)}
             className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 transition"
           >
             Delete Group
@@ -54,27 +131,24 @@ const GroupDetails = ({ group, onJoin, onDelete }) => {
 
       {/* Prominent Deadline */}
       <div
-        className={`mt-6 p-4 rounded-xl shadow-sm flex items-start gap-3 ${
-          isDeadlineOver
-            ? 'bg-red-100 border-l-4 border-red-500'
-            : 'bg-yellow-100 border-l-4 border-yellow-500'
-        }`}
+        className={`mt-6 p-4 rounded-xl shadow-sm flex items-start gap-3 ${isDeadlineOver
+          ? 'bg-red-100 border-l-4 border-red-500'
+          : 'bg-yellow-100 border-l-4 border-yellow-500'
+          }`}
       >
         <span className="text-2xl">
           {isDeadlineOver ? '🚫' : '⏳'}
         </span>
         <div>
           <p
-            className={`font-semibold text-lg ${
-              isDeadlineOver ? 'text-red-800' : 'text-yellow-800'
-            }`}
+            className={`font-semibold text-lg ${isDeadlineOver ? 'text-red-800' : 'text-yellow-800'
+              }`}
           >
             {isDeadlineOver ? 'Joining ended on:' : 'Deadline to Join:'}
           </p>
           <p
-            className={`text-base font-medium ${
-              isDeadlineOver ? 'text-red-700' : 'text-yellow-700'
-            }`}
+            className={`text-base font-medium ${isDeadlineOver ? 'text-red-700' : 'text-yellow-700'
+              }`}
           >
             {deadline}
           </p>
@@ -95,3 +169,24 @@ const GroupDetails = ({ group, onJoin, onDelete }) => {
 };
 
 export default GroupDetails;
+
+
+
+
+
+
+
+
+// import React from 'react';
+// import { useParams } from 'react-router';
+
+// const GroupDetails = () => {
+//   const { _id } = useParams()
+//   return (
+//     <div>
+//       GroupDetails
+//     </div>
+//   );
+// };
+
+// export default GroupDetails;
