@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Provider/AuthProvider';
 // import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 // import Swal from 'sweetalert2';
 
 const GroupDetails = ({ onJoin }) => {
 
+  const { user } = useContext(AuthContext);
+console.log(user.email)
   // { onJoin, onDelete }
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const Groups = useLoaderData()
+  const Groups = useLoaderData();
   // console.log(Groups)
 
   const { _id } = useParams()
   if (!Groups) return null;
   const group = Groups.find(group => group._id === _id);
 
-  // console.log(group)
+  // console.log("group er mail", group.userEmail)
 
 
 
@@ -88,17 +91,10 @@ const GroupDetails = ({ onJoin }) => {
       {/* Title and Actions */}
       <div className="mt-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <h1 className="text-3xl font-bold text-gray-900">{group.groupName}</h1>
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => onJoin(group._id)}
-            disabled={isDeadlineOver}
-            className={`px-4 py-2 rounded-xl transition text-white ${isDeadlineOver
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-green-600 hover:bg-green-700'
-              }`}
-          >
-            Join Group
-          </button>
+
+    {
+      (user.email===group.userEmail) ? <div className="flex flex-wrap gap-2">
+          
           <Link
           to={`/updateGroup/${_id}`}
             className="text-white px-4 py-2 rounded-xl bg-green-600 hover:bg-green-700 transition"
@@ -111,7 +107,20 @@ const GroupDetails = ({ onJoin }) => {
           >
             Delete Group
           </button>
-        </div>
+        </div> : <button
+            onClick={() => onJoin(group._id)}
+            disabled={isDeadlineOver}
+            className={`px-4 py-2 rounded-xl transition text-white ${isDeadlineOver
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-green-600 hover:bg-green-700'
+              }`}
+          >
+            Join Group
+          </button>
+    }
+
+        
+        
       </div>
 
       {/* Description */}
