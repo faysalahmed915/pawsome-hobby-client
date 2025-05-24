@@ -18,7 +18,7 @@ const MyGroups = () => {
           {/* grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  */}
             {
         myGroups.length > 0 ? (
-          <div className="py-6 grid xl:grid-cols-2 lg:px-64 gap-6">
+          <div className="py-6 grid px-2 md:px-10 lg:px-20 gap-6">
                 {myGroups.map((group) => (
                     <MyGroup key={group._id} group={group}></MyGroup>
 

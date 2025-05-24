@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useNavigate, useParams } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -31,7 +31,7 @@ const UpdateGroup = () => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        console.log('Form Data:', Object.fromEntries(formData.entries()));
+        // console.log('Form Data:', Object.fromEntries(formData.entries()));
         const updatedGroup = Object.fromEntries(formData.entries())
         console.log(updatedGroup)
 

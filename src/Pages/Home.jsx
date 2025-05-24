@@ -21,12 +21,12 @@ const Home = () => {
     // const { fetchedData } = useContext(UserContext);
 
     const { user } = useContext(AuthContext)
-    console.log(user.email)
+    // console.log(user.email)
     const allGroups = useLoaderData();
-    console.log(allGroups)
+    // console.log(allGroups)
     const allOtherGroup = allGroups.filter(
-        group => group.userEmail !== user.email);
-    console.log(allOtherGroup)
+        group => group?.userEmail !== user?.email);
+    // console.log(allOtherGroup)
     const today = new Date();
 
     const filteredGroups = allOtherGroup.filter(group => {

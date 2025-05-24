@@ -26,8 +26,7 @@ export const router = createBrowserRouter([
                 loader: async () => {
                     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                     return res.json();
-                },
-               
+                },               
                 hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {

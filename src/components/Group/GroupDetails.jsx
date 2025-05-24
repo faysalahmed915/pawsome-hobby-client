@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
+// import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
+// import Swal from 'sweetalert2';
 
 const GroupDetails = ({ onJoin }) => {
 
@@ -10,8 +12,8 @@ const GroupDetails = ({ onJoin }) => {
   const Groups = useLoaderData()
   // console.log(Groups)
 
-  if (!Groups) return null;
   const { _id } = useParams()
+  if (!Groups) return null;
   const group = Groups.find(group => group._id === _id);
 
   // console.log(group)

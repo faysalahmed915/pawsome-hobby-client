@@ -6,9 +6,14 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import PhotoUser from '../Profile/PhotoUser';
 
 const Navbar = () => {
-    const { user, logOut } = use(AuthContext);
+    const { user, logOut, loading } = use(AuthContext);
     const navigate = useNavigate();
     // const photo = user.photoURL;
+    
+if( loading){
+    return <div>loading</div>
+}
+
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -57,7 +62,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end gap-3">
-                {user?.photoURL ? (
+                {user? (
                     <PhotoUser />
                 ) : (
                     <span className="text-sm text-gray-600">{user?.email}</span>
