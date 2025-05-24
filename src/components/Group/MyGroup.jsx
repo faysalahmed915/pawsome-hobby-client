@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Tooltip from '../HomeComponents/Tooltip';
 
-const Group = ({ group }) => {
+const MyGroup = ({ group }) => {
     // console.log(group._id)
 
     return (
         <div
             key={group._id}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl max-w-md mx-auto flex flex-col"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl max-w-xl mx-auto grid sm:grid-cols-2"
         >
-            <img
+            <div className='self-center p-2'>
+                <img
                 src={group.imageUrl}
                 alt={group.groupName}
-                className="w-full h-48 object-cover"
+                className="w-full h-48 object-cover rounded-2xl shadow-lg"
             />
+            </div>
             <div className="p-5 flex flex-col flex-grow">
                 <h2 className="text-xl font-semibold text-gray-900 mb-2">{group.groupName}</h2>
                 <p className="text-gray-700 mb-4">{group.description}</p>
@@ -25,11 +26,9 @@ const Group = ({ group }) => {
                 </div>
                 {/* Push the button to the bottom right */}
                 <div className="mt-auto flex justify-end">
-                    <Tooltip>
-                        <Link to={`/group/${group._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
+                    <Link to={`/group/${group._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
                             View Details
                     </Link>
-                    </Tooltip>
                 </div>
             </div>
         </div>
@@ -37,4 +36,4 @@ const Group = ({ group }) => {
     );
 };
 
-export default Group;
+export default MyGroup;

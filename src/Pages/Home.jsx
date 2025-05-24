@@ -1,7 +1,19 @@
 import React from 'react';
+// import { useEffect, useState } from 'react';
+
+import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router';
-import GroupDetails from '../components/Group/GroupDetails';
-// import { UserContext } from '../Provider/UserProvider';
+import Banner from '../components/HomeComponents/Banner';
+import FeaturedGroups from '../components/HomeComponents/FeaturedGroups';
+import StaticSectionOne from '../components/HomeComponents/StaticSectionOne';
+import StaticSectionTwo from '../components/HomeComponents/StaticSectionTwo';
+import TypewriterComponent from '../components/HomeComponents/TypewriterComponent ';
+import HobbyAwesomeReveal from '../components/HomeComponents/HobbyAwesomeReveal';
+// import HobbyLottie from '../components/HomeComponents/HobbyLottie';
+
+
+
+
 
 const Home = () => {
     // const { fetchedData } = useContext(UserContext);
@@ -13,8 +25,37 @@ const Home = () => {
 
     return (<>
 
-        
 
+        <div>
+
+            <Helmet>
+                <title>HobbyHub | Home</title>
+            </Helmet>
+
+
+        <HobbyAwesomeReveal />
+
+
+            {/* <div className="flex flex-col items-center mt-10">
+                <HobbyLottie />
+                <h2 className="text-xl font-semibold mt-4">Find your tribe. Share your hobby.</h2>
+            </div> */}
+
+
+            {/* Banner with 3+ slides */}
+            <div className='max-w-xl mx-auto py-10'>
+                <Banner />
+            </div>
+
+            {/* Featured Groups (limit to 6) */}
+            <FeaturedGroups />
+
+            {/* Two extra static sections */}
+            <StaticSectionOne />
+            
+            <TypewriterComponent></TypewriterComponent>
+            <StaticSectionTwo />
+        </div>
 
 
         <div className="p-6 max-w-7xl mx-auto">

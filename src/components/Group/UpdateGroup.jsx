@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -16,6 +16,8 @@ const hobbyCategories = [
 ];
 
 const UpdateGroup = () => {
+
+    const navigate = useNavigate()
     const group = useLoaderData();
     const { user } = useContext(AuthContext);
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -52,6 +54,7 @@ const UpdateGroup = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                navigate('/MyGroup')
                 }
             })
 

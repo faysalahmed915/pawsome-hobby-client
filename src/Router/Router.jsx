@@ -60,6 +60,15 @@ export const router = createBrowserRouter([
                 element: <PrivateRout>
                     <MyGroups></MyGroups>
                 </PrivateRout>,
+                loader: async () => {
+                    const res = await fetch('http://localhost:3000/createGroup');
+                    return res.json();
+                },
+            //    loader: async () => {
+            //         const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
+            //         return res.json();
+            //     },
+            hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
                 path: "/group/:_id",
