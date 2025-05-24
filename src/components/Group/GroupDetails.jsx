@@ -45,7 +45,7 @@ const GroupDetails = ({ onJoin }) => {
           icon: "success"
         });
 
-        navigate('/explore')
+        navigate('/MyGroup')
       }
     });
   }

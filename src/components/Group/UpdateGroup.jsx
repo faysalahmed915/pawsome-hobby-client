@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useParams } from 'react-router';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const hobbyCategories = [
     'Drawing & Painting',
@@ -20,6 +21,9 @@ const UpdateGroup = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [customCategory, setCustomCategory] = useState('');
 
+    const id = group._id
+    // const { id } = useParams()
+    // console.log(id)
 
     const updateGroup = (e) => {
         e.preventDefault();
@@ -28,6 +32,28 @@ const UpdateGroup = () => {
         console.log('Form Data:', Object.fromEntries(formData.entries()));
         const updatedGroup = Object.fromEntries(formData.entries())
         console.log(updatedGroup)
+
+
+        fetch(`http://localhost:3000/createGroup/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedGroup)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Group has been updated",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
 
         // const updatedGroup = {
         //     groupName,
