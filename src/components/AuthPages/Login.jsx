@@ -11,7 +11,7 @@ const Login = () => {
     const location = useLocation();
 
     const [errorMessage, setErrorMessage] = useState("");
-
+    console.log(errorMessage)
 
     const handleLogin = (event) => {
         event.preventDefault();

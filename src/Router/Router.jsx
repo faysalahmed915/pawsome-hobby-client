@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/group/:_id",
-                element: <GroupDetails></GroupDetails>,
+                element: <PrivateRout><GroupDetails></GroupDetails></PrivateRout>,
                 loader: async () => {
                     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                     return res.json();
@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/updateGroup/:id',
-                element: <UpdateGroup></UpdateGroup>,
+                element: <PrivateRout><UpdateGroup></UpdateGroup></PrivateRout>,
                 loader: async ({params}) => {
                     const res = await fetch(`https://pawsome-hobby-server.vercel.app/createGroup/${params.id}`);
                     return res.json();

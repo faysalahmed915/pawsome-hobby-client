@@ -6,12 +6,12 @@ import MyGroup from '../components/Group/MyGroup';
 
 const MyGroups = () => {
     const allGroups = useLoaderData()
-    console.log(allGroups)
+    // console.log(allGroups)
     const {user} = useContext(AuthContext)
 
     const myGroups = allGroups.filter(group => group.userEmail === user.email)
 
-    console.log(myGroups)
+    // console.log(myGroups)
     return (
         <div>
             
@@ -20,7 +20,8 @@ const MyGroups = () => {
         myGroups.length > 0 ? (
           <div className="py-6 grid px-2 md:px-10 lg:px-20 gap-6">
                 {myGroups.map((group) => (
-                    <MyGroup key={group._id} group={group}></MyGroup>
+                    <MyGroup key={group._id} group={group}
+                    ></MyGroup>
 
 
                 ))}
