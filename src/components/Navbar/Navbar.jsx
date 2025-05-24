@@ -35,7 +35,7 @@ if( loading){
         </>
     );
     return (
-        <div className="navbar bg-white shadow-md rounded-xl px-4 py-2">
+        <div className="navbar bg-base-100 shadow-md rounded-xl px-4 py-2">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost text-gray-600 lg:hidden hover:bg-gray-100">
@@ -50,7 +50,7 @@ if( loading){
                         {links}
                     </ul>
                 </div>
-                <Link to="/" className="text-xl font-semibold hidden lg:flex items-center gap-2 text-gray-800">
+                <Link to="/" className="text-xl font-bold hidden lg:flex items-center gap-2">
                     <FaPaw className="text-[#176AE5] text-2xl" /> Pawsome Hobby
                 </Link>
             </div>

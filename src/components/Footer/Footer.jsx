@@ -2,7 +2,10 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+    <footer 
+    // className='card-container'
+    // className="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200"
+    >
       <div className="max-w-5xl mx-auto px-4 py-10 flex flex-col md:flex-row justify-between gap-6">
         {/* Logo and Description */}
         <div className="space-y-2">
