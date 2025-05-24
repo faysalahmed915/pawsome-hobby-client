@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData, useNavigate, useParams } from 'react-router';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 
 const GroupDetails = ({ onJoin }) => {
@@ -12,28 +12,14 @@ const GroupDetails = ({ onJoin }) => {
 
   if (!Groups) return null;
   const { _id } = useParams()
-  // console.log(_id);
-
-  // const group = Groups.find(group => group._id === parseInt(_id));
-
   const group = Groups.find(group => group._id === _id);
-
 
   // console.log(group)
 
-const handleUpdate = () => {
-  
-}
 
 
-
-
-
-  const handleDelete = (  ) => {
-    // const id = parseInt(_id);
-    // console.log (typeof id)
-
-
+  const handleDelete = () => {
+    console.log(_id)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -49,10 +35,10 @@ const handleUpdate = () => {
         fetch(`http://localhost:3000/createGroup/${_id}`, {
           method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data=>{
-          console.log('after delete', data)
-        })
+          .then(res => res.json())
+          .then(data => {
+            console.log('after delete', data)
+          })
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -111,12 +97,12 @@ const handleUpdate = () => {
           >
             Join Group
           </button>
-          <button
-            onClick={() => handleUpdate(group._id)}
+          <Link
+          to={`/updateGroup/${_id}`}
             className="text-white px-4 py-2 rounded-xl bg-green-600 hover:bg-green-700 transition"
           >
             Update Group
-          </button>
+          </Link>
           <button
             onClick={() => handleDelete(group._id)}
             className="bg-red-600 text-white px-4 py-2 rounded-xl hover:bg-red-700 transition"
@@ -164,7 +150,10 @@ const handleUpdate = () => {
         <p><strong>📧 Email:</strong> {group.userEmail}</p>
         <p><strong>🆔 ID:</strong> {group._id}</p>
       </div>
+
+
     </div>
+
   );
 };
 

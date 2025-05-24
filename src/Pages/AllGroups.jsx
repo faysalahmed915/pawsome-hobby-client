@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 import GroupDetails from '../components/Group/GroupDetails';
 import Group from '../components/Group/Group';
 
-const Explore = () => {
+const AllGroups = () => {
     const groups = useLoaderData();
     return (<>
 
@@ -37,4 +37,4 @@ const Explore = () => {
     );
 };
 
-export default Explore;
+export default AllGroups;
