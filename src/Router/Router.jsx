@@ -11,6 +11,7 @@ import Profile from "../Pages/Profile";
 import GroupDetails from "../components/Group/GroupDetails";
 import UpdateGroup from "../components/Group/UpdateGroup";
 import AllGroups from "../Pages/AllGroups";
+import MyGroups from "../Pages/MyGroups";
 
 export const router = createBrowserRouter([
     {
@@ -56,7 +57,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/MyGroup",
-                element: <PrivateRout><h1>My Group</h1></PrivateRout>,
+                element: <PrivateRout>
+                    <MyGroups></MyGroups>
+                </PrivateRout>,
             },
             {
                 path: "/group/:_id",
