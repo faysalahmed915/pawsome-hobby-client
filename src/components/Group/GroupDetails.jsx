@@ -32,7 +32,7 @@ const GroupDetails = ({ onJoin }) => {
       console.log(result.isConfirmed)
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:3000/createGroup/${_id}`, {
+        fetch(`https://pawsome-hobby-server.vercel.app/createGroup/${_id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

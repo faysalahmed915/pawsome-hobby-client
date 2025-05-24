@@ -9,10 +9,10 @@ import UserProvider from './Provider/UserProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <UserProvider>
+    <UserProvider>
+      <AuthProvider>
         <RouterProvider router={router} fallbackElement={<p>Loading, Please Wait....</p>} />
-      </UserProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </UserProvider>
   </StrictMode>,
 )

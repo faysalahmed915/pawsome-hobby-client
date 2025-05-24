@@ -2,8 +2,8 @@ import React from 'react';
 import { Fade } from "react-awesome-reveal";
 
 const HobbyAwesomeReveal = () => {
-    return (
-       <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center p-6">
+  return (
+    <div className="py-2 md:py-6 lg:py-8 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center p-6">
       <div className="max-w-xl w-full bg-white rounded-3xl shadow-xl p-8 md:p-12 text-gray-800">
         <Fade>
           <h1 className="text-3xl md:text-4xl font-extrabold mb-4 text-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-400 bg-clip-text text-transparent">
@@ -32,7 +32,7 @@ const HobbyAwesomeReveal = () => {
         </Fade>
       </div>
     </div>
-    );
+  );
 };
 
 export default HobbyAwesomeReveal;

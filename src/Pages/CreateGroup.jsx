@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const hobbyCategories = [
   'Drawing & Painting',
@@ -22,7 +24,7 @@ const CreateGroup = () => {
     return today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
   });
 
-
+  const navigate = useNavigate()
 
   const handleCreateGroup = (e) => {
     e.preventDefault();
@@ -32,7 +34,7 @@ const CreateGroup = () => {
     const newGroup = Object.fromEntries(formData.entries())
 
     // send data to the server
-    fetch('http://localhost:3000/createGroup', {
+    fetch('https://pawsome-hobby-server.vercel.app/createGroup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,14 +46,22 @@ const CreateGroup = () => {
         console.log('Success:', data);
         // Optionally, you can redirect or show a success message here
         // form.reset(); 
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate('/MyGroup')
       })
       .catch((error) => {
         console.error('Error:', error);
 
-    })
+      })
   }
 
-// 
+  // 
 
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

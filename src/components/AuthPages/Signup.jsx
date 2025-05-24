@@ -25,7 +25,7 @@ const SignUp = () => {
         console.log(newUser);
 
         // send data to the server
-        fetch('http://localhost:3000/signup', {
+        fetch('https://pawsome-hobby-server.vercel.app/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,15 +42,6 @@ const SignUp = () => {
                 console.error('Error:', error);
 
             })
-
-
-
-
-
-
-
-
-
 
 
 

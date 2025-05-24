@@ -36,7 +36,7 @@ const UpdateGroup = () => {
         console.log(updatedGroup)
 
 
-        fetch(`http://localhost:3000/createGroup/${id}`, {
+        fetch(`https://pawsome-hobby-server.vercel.app/createGroup/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

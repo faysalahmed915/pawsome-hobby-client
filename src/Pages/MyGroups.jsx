@@ -11,7 +11,7 @@ const MyGroups = () => {
 
     const myGroups = allGroups.filter(group => group.userEmail === user.email)
 
-    console.log(myGroups.length)
+    console.log(myGroups)
     return (
         <div>
             

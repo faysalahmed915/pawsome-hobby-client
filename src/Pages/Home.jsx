@@ -1,24 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import { useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router';
 import Banner from '../components/HomeComponents/Banner';
-import FeaturedGroups from '../components/HomeComponents/FeaturedGroups';
+// import FeaturedGroups from '../components/HomeComponents/FeaturedGroups';
 import StaticSectionOne from '../components/HomeComponents/StaticSectionOne';
 import StaticSectionTwo from '../components/HomeComponents/StaticSectionTwo';
 import TypewriterComponent from '../components/HomeComponents/TypewriterComponent ';
 import HobbyAwesomeReveal from '../components/HomeComponents/HobbyAwesomeReveal';
-// import HobbyLottie from '../components/HomeComponents/HobbyLottie';
-
+import Group from '../components/Group/Group';
+import { AuthContext } from '../Provider/AuthProvider';
+// import CountUp from '../components/CountUp/AddCountUp';
+import AddCountUp from '../components/CountUp/AddCountUp';
 
 
 
 
 const Home = () => {
     // const { fetchedData } = useContext(UserContext);
-    const groups = useLoaderData();
-    // console.log(users);
+
+    const { user } = useContext(AuthContext)
+    console.log(user.email)
+    const allGroups = useLoaderData();
+    console.log(allGroups)
+    const allOtherGroup = allGroups.filter(
+        group => group.userEmail !== user.email);
+    console.log(allOtherGroup)
+    const today = new Date();
+
+    const filteredGroups = allOtherGroup.filter(group => {
+        const startDate = new Date(group.startDate);
+        startDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+        return startDate >= today;
+    });
+
+    const groups = filteredGroups.slice(0, 6);
+
+    // const shuffledGroups = [...allGroups].sort(() => Math.random() - 0.5);
+    // const groups = shuffledGroups.slice(0, 6);
+
 
 
 
@@ -33,14 +55,23 @@ const Home = () => {
             </Helmet>
 
 
-        <HobbyAwesomeReveal />
+
+            <HobbyAwesomeReveal />
 
 
-            {/* <div className="flex flex-col items-center mt-10">
-                <HobbyLottie />
-                <h2 className="text-xl font-semibold mt-4">Find your tribe. Share your hobby.</h2>
-            </div> */}
+            <TypewriterComponent></TypewriterComponent>
 
+            {/* view group */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {groups.map((group) => (
+                    <Group key={group._id} group={group}></Group>
+
+
+                ))}
+            </div>
+
+
+            <StaticSectionTwo />
 
             {/* Banner with 3+ slides */}
             <div className='max-w-xl mx-auto py-10'>
@@ -48,50 +79,19 @@ const Home = () => {
             </div>
 
             {/* Featured Groups (limit to 6) */}
-            <FeaturedGroups />
+            {/* <FeaturedGroups /> */}
 
             {/* Two extra static sections */}
             <StaticSectionOne />
             
-            <TypewriterComponent></TypewriterComponent>
-            <StaticSectionTwo />
+            
+            <AddCountUp></AddCountUp>
+
+
         </div>
 
 
-        <div className="p-6 max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6 text-center">Hobby Groups</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {groups.map((group) => (
-                    <div
-                        key={group._id}
-                        className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl max-w-md mx-auto flex flex-col"
-                    >
-                        <img
-                            src={group.imageUrl}
-                            alt={group.groupName}
-                            className="w-full h-48 object-cover"
-                        />
-                        <div className="p-5 flex flex-col flex-grow">
-                            <h2 className="text-xl font-semibold text-gray-900 mb-2">{group.groupName}</h2>
-                            <p className="text-gray-700 mb-4">{group.description}</p>
-                            <div className="text-sm text-gray-500 space-y-1 mb-6">
-                                <p>📍 {group.location}</p>
-                                <p>👥 Max Members: {group.maxMembers}</p>
-                                <p>📅 Starts: {group.startDate}</p>
-                            </div>
-                            {/* Push the button to the bottom right */}
-                            <div className="mt-auto flex justify-end">
-                                <button className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition">
-                                    View Details
-                                </button>
-                            </div>
-                        </div>
-                    </div>
 
-
-                ))}
-            </div>
-        </div>
 
 
 
