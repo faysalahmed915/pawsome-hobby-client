@@ -13,7 +13,6 @@ import Group from '../components/Group/Group';
 import { AuthContext } from '../Provider/AuthProvider';
 // import CountUp from '../components/CountUp/AddCountUp';
 import AddCountUp from '../components/CountUp/AddCountUp';
-import ThemeToggle from '../components/Theme/ThemeToggle';
 
 
 
@@ -48,9 +47,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className="p-4 flex justify-end">
-                <ThemeToggle />
-            </div>
+            
 
             <Helmet>
                 <title>HobbyHub | Home</title>

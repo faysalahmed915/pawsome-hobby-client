@@ -1,5 +1,93 @@
+/* index.css */
+
 @import "tailwindcss";
-@plugin "daisyui";
+
 @plugin "daisyui" {
-    themes: light --default, dark --prefersdark;
+  themes: light --default, dark --prefersdark, hobbyhublight, hobbyhubdark;
+}
+
+/* -----------------------------------------------
+  Custom Theme: Hobby Hub Light
+  -----------------------------------------------
+  A bright, welcoming theme with friendly blues,
+  warm oranges, and lively green accents.
+*/
+@plugin "daisyui/theme" {
+  name: "hobbyhublight";
+  color-scheme: light;
+
+  /* Brand Colors */
+  --color-primary: oklch(55% 0.15 220);     /* A friendly, medium blue/teal */
+  --color-primary-content: oklch(100% 0 0); /* White text for primary */
+
+  --color-secondary: oklch(70% 0.12 60);    /* A warm, soft orange */
+  --color-secondary-content: oklch(20% 0 0);/* Dark grey text for secondary */
+
+  --color-accent: oklch(75% 0.16 120);     /* A lively, bright yellow-green */
+  --color-accent-content: oklch(20% 0 0);  /* Dark grey text for accent */
+
+  --color-neutral: oklch(90% 0.01 220);    /* A soft, light gray for neutral elements */
+  --color-neutral-content: oklch(25% 0 0); /* Dark grey text for neutral */
+
+  /* Base Colors - Backgrounds & Main Content */
+  --color-base-100: oklch(100% 0 0);        /* Pure white for main backgrounds */
+  --color-base-200: oklch(98% 0 0);         /* Slightly off-white for subtle elevation */
+  --color-base-300: oklch(95% 0 0);         /* Another shade for more elevation/borders */
+  --color-base-content: oklch(20% 0 0);     /* Deep dark grey for main text content */
+
+  /* Semantic Colors - Messages & States */
+  --color-info: oklch(65% 0.08 240);        /* Standard info blue */
+  --color-info-content: oklch(100% 0 0);
+  
+  --color-success: oklch(60% 0.14 150);     /* Standard success green */
+  --color-success-content: oklch(100% 0 0);
+
+  --color-warning: oklch(75% 0.12 90);      /* Standard warning yellow/orange */
+  --color-warning-content: oklch(20% 0 0);
+
+  --color-error: oklch(60% 0.18 20);       /* Standard error red */
+  --color-error-content: oklch(100% 0 0);
+}
+
+/* -----------------------------------------------
+  Custom Theme: Hobby Hub Dark
+  -----------------------------------------------
+  A soothing dark theme, ensuring good contrast
+  and readability.
+*/
+@plugin "daisyui/theme" {
+  name: "hobbyhubdark";
+  color-scheme: dark;
+
+  /* Brand Colors */
+  --color-primary: oklch(45% 0.15 220);     /* Darker blue/teal primary */
+  --color-primary-content: oklch(95% 0 0);  /* Light text for primary */
+
+  --color-secondary: oklch(60% 0.12 60);    /* Darker soft orange secondary */
+  --color-secondary-content: oklch(90% 0 0);/* Light grey text for secondary */
+
+  --color-accent: oklch(65% 0.16 120);      /* Still lively yellow-green accent */
+  --color-accent-content: oklch(20% 0 0);   /* Dark grey text for accent */
+
+  --color-neutral: oklch(25% 0.01 220);    /* A darker, muted gray for neutral elements */
+  --color-neutral-content: oklch(75% 0 0); /* Lighter grey text for neutral */
+
+  /* Base Colors - Backgrounds & Main Content */
+  --color-base-100: oklch(10% 0 0);         /* Very dark grey for main backgrounds */
+  --color-base-200: oklch(15% 0 0);         /* Slightly lighter for subtle elevation */
+  --color-base-300: oklch(20% 0 0);         /* Another shade for more elevation/borders */
+  --color-base-content: oklch(85% 0 0);     /* Light grey for main text content */
+
+  /* Semantic Colors - Messages & States */
+  --color-info: oklch(55% 0.08 240);        /* Darker info blue */
+  --color-info-content: oklch(95% 0 0);
+  
+  --color-success: oklch(50% 0.14 150);     /* Darker success green */
+  --color-success-content: oklch(95% 0 0);
+
+  --color-warning: oklch(65% 0.12 90);      /* Darker warning yellow/orange */
+  --color-warning-content: oklch(20% 0 0);
+
+  --color-error: oklch(50% 0.18 20);        /* Darker error red */
+  --color-error-content: oklch(95% 0 0);
 }

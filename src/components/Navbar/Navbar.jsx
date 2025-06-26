@@ -4,15 +4,16 @@ import { Link, NavLink, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Provider/AuthProvider';
 import PhotoUser from '../Profile/PhotoUser';
+import ThemeToggle from '../Theme/ThemeToggle';
 
 const Navbar = () => {
     const { user, logOut, loading } = use(AuthContext);
     const navigate = useNavigate();
     // const photo = user.photoURL;
-    
-if( loading){
-    return <div>loading</div>
-}
+
+    if (loading) {
+        return <div>loading</div>
+    }
 
     const handleLogOut = () => {
         logOut()
@@ -26,16 +27,24 @@ if( loading){
     }
     const links = (
         <>
-            <NavLink to="/" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Home</NavLink>
-            {user && <NavLink to="/Profile" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Profile</NavLink>}
-            <NavLink to="/groups" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>All Groups</NavLink>
-            <NavLink to="/createGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Create Group</NavLink>
-            {user && <NavLink to="/MyGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>My Groups</NavLink>}
-            <NavLink to="/contactUs" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Contact Us</NavLink>
+            <NavLink to="/" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Home</NavLink>
+            {user && <NavLink to="/Profile" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Profile</NavLink>}
+            <NavLink to="/groups" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>All Groups</NavLink>
+            <NavLink to="/createGroup" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Create Group</NavLink>
+            {user && <NavLink to="/MyGroup" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>My Groups</NavLink>}
+            <NavLink to="/contactUs" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Contact Us</NavLink>
         </>
+        // <>
+        //     <NavLink to="/" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Home</NavLink>
+        //     {user && <NavLink to="/Profile" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Profile</NavLink>}
+        //     <NavLink to="/groups" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>All Groups</NavLink>
+        //     <NavLink to="/createGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Create Group</NavLink>
+        //     {user && <NavLink to="/MyGroup" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>My Groups</NavLink>}
+        //     <NavLink to="/contactUs" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Contact Us</NavLink>
+        // </>
     );
     return (
-        <div className="navbar bg-primary shadow-md rounded-xl px-4 py-2 sticky top-0 z-50">
+        <div className="navbar bg-primary shadow-md px-4 lg:px-8 py-2 sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost text-gray-600 lg:hidden hover:bg-gray-100">
@@ -62,7 +71,7 @@ if( loading){
             </div>
 
             <div className="navbar-end gap-3">
-                {user? (
+                {user ? (
                     <PhotoUser />
                 ) : (
                     <span className="text-sm text-gray-600">{user?.email}</span>
@@ -79,18 +88,21 @@ if( loading){
                     <div className="flex gap-2">
                         <Link
                             to="/login"
-                            className="btn rounded-full bg-[#176AE5] text-white hover:bg-[#145bcc] px-5"
+                            className="btn rounded-full bg-primary text-white hover:bg-[#145bcc] px-5"
                         >
                             Login
                         </Link>
                         <Link
                             to="/signUp"
-                            className="btn rounded-full bg-[#176AE5] text-white hover:bg-[#145bcc] px-5"
+                            className="btn rounded-full bg-primary text-white hover:bg-[#145bcc] px-5"
                         >
                             Sign Up
                         </Link>
                     </div>
                 )}
+                
+                    <ThemeToggle />
+                
             </div>
         </div>
 
