@@ -35,7 +35,7 @@ if( loading){
         </>
     );
     return (
-        <div className="navbar bg-base-100 shadow-md rounded-xl px-4 py-2">
+        <div className="navbar bg-base-100 shadow-md rounded-xl px-4 py-2 sticky top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost text-gray-600 lg:hidden hover:bg-gray-100">
