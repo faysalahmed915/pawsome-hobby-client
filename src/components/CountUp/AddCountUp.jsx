@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 
 const AddCountUp = () => {
     return (
-        <div className="hero bg-base-200">
+        <div className="hero">
             <div className="hero-content text-center flex-col">
                 <div>
                     <h1 className="text-3xl font-bold">Our Records and Successes</h1>

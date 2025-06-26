@@ -13,6 +13,7 @@ import Group from '../components/Group/Group';
 import { AuthContext } from '../Provider/AuthProvider';
 // import CountUp from '../components/CountUp/AddCountUp';
 import AddCountUp from '../components/CountUp/AddCountUp';
+import GroupCarousel from '../components/HomeComponents/GroupCarousel';
 
 
 
@@ -46,20 +47,20 @@ const Home = () => {
 
 
     return (
-        <div>
-            
+        <div className="max-w-7xl mx-auto">
+
 
             <Helmet>
                 <title>HobbyHub | Home</title>
             </Helmet>
 
-
-
-
             <HobbyAwesomeReveal />
 
-
             <TypewriterComponent></TypewriterComponent>
+
+
+            <GroupCarousel></GroupCarousel>
+
 
             {/* view group */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -74,8 +75,9 @@ const Home = () => {
             <StaticSectionTwo />
 
             {/* Banner with 3+ slides */}
-            <div className='max-w-xl mx-auto py-10'>
-                <Banner />
+            <div className='max-w-7xl mx-auto py-6 bg-base-100 rounded-2xl shadow-lg'>
+                {/* <Banner /> */}
+                <AddCountUp></AddCountUp>
             </div>
 
             {/* Featured Groups (limit to 6) */}
@@ -85,7 +87,6 @@ const Home = () => {
             <StaticSectionOne />
 
 
-            <AddCountUp></AddCountUp>
 
 
         </div>
