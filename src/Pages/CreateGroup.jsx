@@ -53,7 +53,7 @@ const CreateGroup = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate('/MyGroup')
+        navigate('/dashboard/MyGroup')
       })
       .catch((error) => {
         console.error('Error:', error);
