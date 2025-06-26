@@ -2,7 +2,7 @@
 
 **Pawsome Hobby** is a vibrant platform that allows users to **discover, join, and create local hobby-based groups** such as painting circles, book clubs, gaming crews, and more. The platform promotes community building and shared interests in an interactive, secure, and beautifully designed environment.
 
-🔗 **Live Site**: [https://pawsomehobby-client.web.app](https://pawsomehobby-client.web.app)  
+🔗 **Live Site**: https://pawsome-hobby.web.app/  
 📁 **Client Repository**: [https://github.com/your-username/pawsomehobby-client](https://github.com/your-username/pawsomehobby-client)  
 📁 **Server Repository**: [https://github.com/your-username/pawsomehobby-server](https://github.com/your-username/pawsomehobby-server)
 
