@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import { FaHome, FaBoxOpen, FaMoneyCheckAlt, FaUserEdit, FaSearchLocation, FaUserCheck, FaUserClock } from 'react-icons/fa';
 import Logo from '../components/Shared/logo';
+import ThemeToggle from '../components/Theme/ThemeToggle';
 
 const DashboardLayout = () => {
     return (
@@ -40,38 +41,48 @@ const DashboardLayout = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <div className='w-32 py-8'>
-                        <Logo></Logo>
+                    <div className="flex justify-between">
+                        <div className='w-32 py-8'>
+                            <Logo></Logo>
+                        </div>
+                        <ThemeToggle></ThemeToggle>
                     </div>
                     <li>
+                        <NavLink to="/dashboard/dashboardHome"
+                            className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
+                            <FaHome className="inline-block mr-2" />
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/dashboard/Profile"
-                        className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
+                            className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
                             <FaHome className="inline-block mr-2" />
                             Profile
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/dashboard/groups"
-                        className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
+                        <NavLink to="/groups"
+                            className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
                             <FaBoxOpen className="inline-block mr-2" />
                             All Groups
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/MyGroup"
-                        className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
+                            className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
                             <FaBoxOpen className="inline-block mr-2" />
                             My Groups
                         </NavLink>
                     </li>
                     <li>
                         <NavLink to="/createGroup"
-                        className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
+                            className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>
                             <FaBoxOpen className="inline-block mr-2" />
                             Creat Group
                         </NavLink>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>

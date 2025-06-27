@@ -6,9 +6,7 @@ import TypewriterComponent from '../components/HomeComponents/TypewriterComponen
 
 const AllGroups = () => {
     const groups = useLoaderData();
-    return (<>
-
-    <div className="p-6 max-w-7xl mx-auto">
+    return (<div className="p-6 max-w-7xl mx-auto">
         <TypewriterComponent></TypewriterComponent>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -19,23 +17,6 @@ const AllGroups = () => {
                 ))}
             </div>
         </div>
-
-
-
-
-        {/* {
-            groups.map((group) => (
-               <GroupDetails key={group._id} group={group}></GroupDetails>
-            ))
-        } */}
-
-
-
-
-
-        
-
-    </>
     );
 };
 

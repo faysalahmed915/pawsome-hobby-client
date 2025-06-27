@@ -13,6 +13,7 @@ import UpdateGroup from "../components/Group/UpdateGroup";
 import AllGroups from "../Pages/AllGroups";
 import MyGroups from "../Pages/MyGroups";
 import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardHome from "../Pages/DashboardHome";
 
 export const router = createBrowserRouter([
     {
@@ -34,7 +35,15 @@ export const router = createBrowserRouter([
                 path: "/createGroup",
                 element: <PrivateRout><CreateGroup /></PrivateRout>,
             },
-            
+            {
+                path: "groups",
+                Component: AllGroups,
+                loader: async () => {
+                    const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
+                    return res.json();
+                },
+                hydrateFallbackElement: <h1>Loading...</h1>,
+            },
             {
                 path: "/group/:_id",
                 element: <PrivateRout><GroupDetails></GroupDetails></PrivateRout>,
@@ -91,8 +100,8 @@ export const router = createBrowserRouter([
                 element: <PrivateRout><Profile/></PrivateRout>,
             },
             {
-                path: "groups",
-                Component: AllGroups,
+                path: "dashboardHome",
+                element: <PrivateRout><DashboardHome></DashboardHome></PrivateRout>,
                 loader: async () => {
                     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                     return res.json();
