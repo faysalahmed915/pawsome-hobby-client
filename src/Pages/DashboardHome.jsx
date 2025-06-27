@@ -7,7 +7,7 @@ const DashboardHome = () => {
     const { user } = use(AuthContext);
     console.log(user);
     const groupsData = useLoaderData();
-    console.log(groupsData);
+    // console.log(groupsData);
 
     // Count totals
     const totalGroups = groupsData?.length || 0;

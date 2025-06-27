@@ -8,7 +8,7 @@ const Group = ({ group }) => {
     return (
         <div
             key={group._id}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl max-w-md mx-auto flex flex-col">
+            className="bg-white rounded-2xl shadow-lg overflow-hidden transition hover:shadow-xl w-64 mx-auto flex flex-col gap-2">
             <img src={group.imageUrl || "https://i.ibb.co/prQx0vfk/images-3.jpg"}
                 alt={group.groupName}
                 className="w-full h-48 object-cover"/>
