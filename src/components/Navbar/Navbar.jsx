@@ -30,7 +30,7 @@ const Navbar = () => {
         <>
             <NavLink to="/" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Home</NavLink>
             
-            {user && <NavLink to="/dashboard/Profile" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>DashBoard</NavLink>}
+            {user && <NavLink to="/dashboard/dashboardHome" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>DashBoard</NavLink>}
 
             <NavLink to="/groups" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>All Groups</NavLink>
             <NavLink to="/createGroup" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Create Group</NavLink>
