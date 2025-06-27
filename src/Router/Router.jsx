@@ -14,6 +14,7 @@ import AllGroups from "../Pages/AllGroups";
 import MyGroups from "../Pages/MyGroups";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../Pages/DashboardHome";
+import FAQ from "../Pages/FAQ";
 
 export const router = createBrowserRouter([
     {
@@ -28,12 +29,16 @@ export const router = createBrowserRouter([
                 loader: async () => {
                     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                     return res.json();
-                },               
+                },
                 hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
                 path: "/createGroup",
                 element: <PrivateRout><CreateGroup /></PrivateRout>,
+            },
+            {
+                path: "/faq",
+                element: <FAQ></FAQ>,
             },
             {
                 path: "groups",
@@ -56,7 +61,7 @@ export const router = createBrowserRouter([
             {
                 path: '/updateGroup/:id',
                 element: <PrivateRout><UpdateGroup></UpdateGroup></PrivateRout>,
-                loader: async ({params}) => {
+                loader: async ({ params }) => {
                     const res = await fetch(`https://pawsome-hobby-server.vercel.app/createGroup/${params.id}`);
                     return res.json();
                 },
@@ -93,11 +98,11 @@ export const router = createBrowserRouter([
                     const res = await fetch('https://pawsome-hobby-server.vercel.app/createGroup');
                     return res.json();
                 },
-            hydrateFallbackElement: <h1>Loading...</h1>,
+                hydrateFallbackElement: <h1>Loading...</h1>,
             },
             {
                 path: "Profile",
-                element: <PrivateRout><Profile/></PrivateRout>,
+                element: <PrivateRout><Profile /></PrivateRout>,
             },
             {
                 path: "dashboardHome",

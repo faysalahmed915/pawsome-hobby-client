@@ -37,6 +37,7 @@ const Navbar = () => {
             
             
             <NavLink to="/contactUs" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>Contact Us</NavLink>
+            <NavLink to="/faq" className={({ isActive }) => isActive ? "text-[#2fe517] font-bold" : "text-secondary"}>FAQ</NavLink>
         </>
         // <>
         //     <NavLink to="/" className={({ isActive }) => isActive ? "text-[#176AE5] font-bold" : "text-gray-500"}>Home</NavLink>
