@@ -115,7 +115,7 @@ console.log(user.email)
               : 'bg-green-600 hover:bg-green-700'
               }`}
           >
-            Join Group
+            {isDeadlineOver ? 'Joining Closed' : 'Join Group'}
           </button>
     }
 

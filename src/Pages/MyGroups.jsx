@@ -19,12 +19,14 @@ const MyGroups = () => {
             {
         myGroups.length > 0 ? (
           <div className="py-6 grid px-2 md:px-10 lg:px-20 gap-6">
-                {myGroups.map((group) => (
-                    <MyGroup key={group._id} group={group}
+                
+                {/* {myGroups.map((group, index) => (
+                    <MyGroup key={group._id} group={group} index = {index}
                     ></MyGroup>
+                ))} */}
 
+                <MyGroup myGroups={myGroups}></MyGroup>
 
-                ))}
             </div>
         ) : (
           <NoGroup />

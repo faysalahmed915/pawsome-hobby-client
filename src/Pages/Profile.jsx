@@ -11,7 +11,7 @@ const Profile = () => {
     const defaultEmail = 'Email not available';
     const defaultPhoto = 'https://ui-avatars.com/api/?name=User&background=random';
     const defaultBio =
-        "👋 Welcome! This user hasn't written a bio yet. Come back later for more info.";
+        "👋 Welcome! This feature hasn't been added yet. Come back later for this section.";
 
     const { user } = useContext(AuthContext);
     const { displayName, email, photoURL } = user || {};
